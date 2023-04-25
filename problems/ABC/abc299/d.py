@@ -1,12 +1,18 @@
-n = input()
+n = int(input())
 
-prev = 0
+mid = n // 2
+l, r = 0, n
 for i in range(20):
-    print("? " + str(i+2))
-    s = int(input())
-    if s != prev:
-        print("! " + str(i+1))
-        exit()
-    prev = s
+    print("? {}".format(mid))
+    m = int(input())
+    if m == 0:
+        l = mid
+    if m == 1:
+        r = mid
 
-print("! " + str(21))
+    mid = (l + r) // 2
+
+    if r - l == 1:
+        break
+
+print("! {}".format(l))
