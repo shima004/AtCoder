@@ -1,7 +1,7 @@
 n = int(input())
-for i in range(65):
-    for j in range(65):
-        if (2**i) * (3**j) == n:
-            print("Yes")
-            exit()
-print("No")
+
+for i in range(n, 920):
+    a = str(i)
+    if int(a[0]) * int(a[1]) == int(a[2]):
+        print(i)
+        exit()

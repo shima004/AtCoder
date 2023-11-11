@@ -1,49 +1,14 @@
-n, t = input().split()
-n = int(n)
-ans = []
+def ans(N, M, A):
+    A.sort()
+    left = 0
+    max_presents = 0
+    for right in range(N):
+        while A[right] - A[left] >= M:
+            left += 1
+        max_presents = max(max_presents, right - left + 1)
+    return max_presents
 
-for i in range(n):
-    s = input()
-    if s == t:
-        ans.append(i + 1)
-        continue
 
-    if len(s) == len(t):
-        count = 0
-        for k in range(len(s)):
-            if s[k] != t[k]:
-                count += 1
-        if count == 1:
-            ans.append(i + 1)
-            continue
-
-    if (len(s) + 1) == len(t):
-        count = 0
-        j = 0
-        for k in range(len(t)):
-            if j == len(s):
-                break
-            if s[j] != t[k]:
-                count += 1
-                j -= 1
-            j += 1
-        if count <= 1:
-            ans.append(i + 1)
-            continue
-
-    if (len(s) - 1) == len(t):
-        count = 0
-        j = 0
-        for k in range(len(s)):
-            if j == len(t):
-                break
-            if s[k] != t[j]:
-                count += 1
-                j -= 1
-            j += 1
-        if count <= 1:
-            ans.append(i + 1)
-            continue
-
-print(len(ans))
-print(*ans)
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+print(ans(N, M, A))

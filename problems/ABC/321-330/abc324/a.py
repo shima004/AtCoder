@@ -1,6 +1,10 @@
-n = int(input())
-a = list(map(int, input().split()))
-if a.count(a[0]) == n:
+x, y = map(int, input().split())
+if (x - y) <= 0 and (x - y) >= -2:
     print("Yes")
-else:
-    print("No")
+    exit()
+
+if (x - y) >= 0 and (x - y) <= 3:
+    print("Yes")
+    exit()
+
+print("No")
